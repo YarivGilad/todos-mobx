@@ -6,7 +6,7 @@ import { observer } from "mobx-react-lite";
 
 export const EntryForm = observer(()=> {
   
-  const { addTodo } = useContext(TodosContext) as TodosStore
+  const store = useContext(TodosContext) as TodosStore
 
   const inputElm = useRef<HTMLInputElement>(null);
   const [disabled,setDisabled] = useState(true)
@@ -14,7 +14,7 @@ export const EntryForm = observer(()=> {
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (inputElm.current && inputElm.current.value.length) {
-      addTodo(inputElm.current.value);
+      store.addTodo(inputElm.current.value);
       inputElm.current.value = "";
     }
   };

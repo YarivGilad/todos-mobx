@@ -20,11 +20,12 @@ export class TodosStore implements ITodosStore {
   currentFilter: VisabilityFilter = VisabilityFilter.All;
 
   constructor() {
-    const annotationsMap = makeAutoObservable(this);
-    console.log({ annotationsMap });
+    makeAutoObservable(this);
+    // const annotationsMap = makeAutoObservable(this);
+    // console.log({ annotationsMap });
   }
   addTodo = (title: string) => {
-    console.log("addTodo, this:", this);
+    // console.log("addTodo, this:", this);
 
     this.todos.push({
       id: shortID(),
@@ -79,5 +80,6 @@ export class TodosStore implements ITodosStore {
 }
 
 export const TodosContext = createContext<TodosStore | null>(null);
-export const store = new TodosStore();
+export const createStore = ()=> new TodosStore();
+export const store = createStore();
 
